@@ -2,7 +2,7 @@ FROM node:alpine as builder
 
 WORKDIR /app/auto-merge/
 
-RUN apk add --no-cache --virtual .gyp python make g++
+RUN apk add --no-cache --virtual .gyp python3 make g++
 
 COPY ./package*.json ./
 
@@ -19,7 +19,5 @@ COPY . ./
 RUN npm run build
 
 EXPOSE 3000
-
-COPY .env ./
 
 ENTRYPOINT [ "npm", "start" ]
